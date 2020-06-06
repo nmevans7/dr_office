@@ -1,11 +1,9 @@
 <h1><%= @patient.full_name %></h1>
 <hr />
 <ul>
-  <% @patient.doctors.each do |patient| %>
-    <li>
-      <%= link_to patient.full_name, patient %>
-    </li>
-  <% end %>
+  <h2>Phone Number: <%= @patient.phone_number %></h2>
+  <h2>Age: <%= @patient.age %></h2>
+    
 </ul>
 <br />
 <br />

@@ -14,21 +14,21 @@ times = ['12:00pm','1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '12:30pm','
 5.times do
   doctor = Doctor.create(
     name: Faker::Name.name,
-    phone_number: Faker::PhoneNumber
+    phone_number: Faker::PhoneNumber.cell_phone
   )
   10.times do
     patient = Patient.create(
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
-      age: Faker::Number,
-      phone_number: Faker::PhoneNumber
+      age: Faker::Number.number(digits: 2),
+      phone_number: Faker::PhoneNumber.cell_phone
     )
     Appointment.create(
       month: months.sample,
       day: days.sample,
       year: 2020,
       time: times.sample,
-      office_name: Faker::Nation
+      office_name: Faker::Nation.capital_city
     )
   end
 end
