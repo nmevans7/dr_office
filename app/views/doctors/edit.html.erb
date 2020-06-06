@@ -1,2 +1,11 @@
-<h1>Doctors#edit</h1>
-<p>Find me in app/views/doctors/edit.html.erb</p>
+<h1>Edit Doctor</h1>
+<%= form_with(model: @doctor, local: true, class: "ui form" ) do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, required: true %>
+
+    <%= f.label :phone_number %>
+    <%= f.text_field :phone_number, required: true %>
+  </div>
+  <%= f.submit nil, class: "ui blue button inverted" %>
+<% end %>

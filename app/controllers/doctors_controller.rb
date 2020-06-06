@@ -1,5 +1,5 @@
 class DoctorsController < ApplicationController
-  before_action :set_doctor, only: [:show, :destroy, :new, :edit]
+  before_action :set_doctor, only: [:show, :destroy, :update, :edit]
   
   def index
     @doctors = Doctor.all
@@ -9,7 +9,7 @@ class DoctorsController < ApplicationController
   end
 
   def new
-    @doctor =Doctor.new
+    @doctor = Doctor.new
   end
 
   def create
@@ -27,7 +27,7 @@ class DoctorsController < ApplicationController
   end
 
   def update
-    if  @docotor.update(doctor_params)
+    if  @doctor.update(doctor_params)
       redirect_to @doctor
     else
       render :edit
@@ -40,14 +40,16 @@ class DoctorsController < ApplicationController
   end
 
   private 
-
+  def set_doctor
+    @doctor = Doctor.find(params[:id])
+  end
+  
+  
   def doctor_params
     params.require(:doctor).permit(:name, :phone_number)
   end
 
 
-  def set_doctor
-    @doctor = Doctor.find(params[:id])
-  end
+  
 
 end

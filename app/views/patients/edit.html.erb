@@ -1,2 +1,17 @@
-<h1>Patients#edit</h1>
-<p>Find me in app/views/patients/edit.html.erb</p>
+<h1>Update Patient</h1>
+<%= form_with(model: @patient, local: true, class: "ui form" ) do |f| %>
+  <div class="field">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, required: true, placeholder: "First Name" %>
+
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, required: true, placeholder: "Last Name" %>
+
+    <%= f.label :age %>
+    <%= f.text_field :age, required: true, placeholder: "27" %>
+
+    <%= f.label :phone_number %>
+    <%= f.text_field :phone_number, required: true, placeholder: "999-999-9999" %>
+  </div>
+  <%= f.submit nil, class: "ui blue button inverted" %>
+<% end %>
