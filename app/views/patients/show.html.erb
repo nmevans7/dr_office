@@ -10,4 +10,5 @@
 <br />
 <%= link_to 'Delete Patient', @patient, method: :delete, class: "ui red button" %>
 <%= link_to 'Update Patient', edit_patient_path(@patient), class: "ui blue button" %>
+<%= link_to 'Add Appointment', new_patient_appointment_path(@patient), class: "ui purple button" %>
 <%= link_to 'Back', patients_path, class: "ui orange button" %>

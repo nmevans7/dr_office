@@ -1,0 +1,19 @@
+<h1>Add Appointment</h1>
+<%= form_with(model: @appointment, local: true, class: "ui form" ) do |f| %>
+  <div class="field">
+    <%= f.label :day %>
+    <%= f.text_field :day, required: true, placeholder: "10" %>
+
+    <%= f.label :month %>
+    <%= f.text_field :month, required: true, placeholder: "12" %>
+
+    <%= f.label :year %>
+    <%= f.text_field :year, required: true, placeholder: "2020" %>
+
+    <%= f.label :time %>
+    <%= f.text_field :phone_number, required: true, placeholder: "8:30" %>
+    <%= f.label :office_name %>
+    <%= f.text_field :office_name, required: true, placeholder: "Office Name" %>
+  </div>
+  <%= f.submit nil, class: "ui blue button inverted" %>
+<% end %>
