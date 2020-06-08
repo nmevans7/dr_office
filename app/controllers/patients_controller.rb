@@ -25,7 +25,7 @@ class PatientsController < ApplicationController
   end
 
   def update
-    if @patient.update(patient.params)
+    if @patient.update(patient_params)
       redirect_to @patient
     else
       render :edit
