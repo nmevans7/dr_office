@@ -1,8 +1,8 @@
 class AppointmentsController < ApplicationController
-  before_action :set_patient
+  before_action :set_doctor
   
   def index
-    @patient.appointments.all
+    @appointments = @doctor.appointments
   end
 
   def edit
@@ -10,13 +10,14 @@ class AppointmentsController < ApplicationController
   end
 
   def new
-    @appoint = @patient.appointments.new
+    @patients = Patient.all
+    @appointment = @doctor.appointments.new
   end
 
   def create
-    @appointment = @patient.appointments.new(appointment_params)
+    @appointment = @doctor.appointments.new(appointment_params)
     if @appointment.save
-      redirect_to patient_appointments_path(@patient)
+      redirect_to doctor_appointments_path(@doctor)
     else
       render :new
     end
@@ -26,19 +27,19 @@ class AppointmentsController < ApplicationController
   end
 
   def destroy
-    @appointment = @patient.appointments.find(params[:id])
+    @appointment = @doctor.appointments.find(params[:id])
     @enrollment.destroy
-    redirect_to patient_endrollments_path(@patient)
+    redirect_to doctor_endrollments_path(@doctor)
   end
 
   private
 
-  def set_patient
-    @patient = Patient.find(params[:patient_id])
+  def set_doctor
+    @doctor = Doctor.find(params[:doctor_id])
   end
 
   def appointment_params
-    params.require(:appointment).permit(:doctor_id)
+    params.require(:appointment).permit(:day, :month, :year, :time, :office_name, :patient_id)
   end
   
 end
