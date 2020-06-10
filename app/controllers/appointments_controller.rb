@@ -6,8 +6,14 @@ class AppointmentsController < ApplicationController
   end
 
   def edit
-    
+   @appointment = Appointment.find(params[:id])
+   @patients = Patient.all
   end
+
+  def update
+
+  end
+
 
   def new
     @patients = Patient.all
@@ -25,12 +31,13 @@ class AppointmentsController < ApplicationController
   end
 
   def show
-
+    @appointment = Appointment.find(params[:id])
+    @patient = Patient.find(params[:id])
   end
 
   def destroy
     @appointment = @doctor.appointments.find(appointment_params)
-    @enrollment.destroy
+    @appointment.destroy
     redirect_to doctor_endrollments_path(@doctor)
   end
 

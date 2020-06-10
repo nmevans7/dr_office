@@ -1,6 +1,6 @@
 <h1><%= @doctor.name %></h1>
 <hr />
-    <h2>Phone Number: <%= @doctor.phone_number %></h2>
+    <h2>Phone Number: <%= @patient.phone_number %></h2>
   
 <br />
 <br />
@@ -8,3 +8,4 @@
 <%= link_to 'Delete Doctor', @doctor, method: :delete, class: "ui red button inverted" %>
 <%= link_to 'Edit Doctor', edit_doctor_path(@doctor), class: "ui blue button inverted" %>
 <%= link_to 'Add Appointment', new_doctor_appointment_path(@doctor), class: "ui purple button" %>
+<%= link_to 'View Appointment', doctor_appointment_path(@doctor), class: "ui green button" %>
