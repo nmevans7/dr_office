@@ -5,7 +5,7 @@ root 'doctors#index'
 
 resources :patients
 resources :doctors do
-  resources :appointments, only: [:index, :new, :create, :destroy]
+  resources :appointments, only: [:index, :new, :create, :destroy, :edit, :show]
 end
 
 end
