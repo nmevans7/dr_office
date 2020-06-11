@@ -2,7 +2,7 @@ class AppointmentsController < ApplicationController
   before_action :set_doctor
   
   def index
-    @appointment = @doctor.appointments.find(appointment_params)
+    @appointments = @doctor.appointments.all
   end
 
   def edit
@@ -11,7 +11,12 @@ class AppointmentsController < ApplicationController
   end
 
   def update
-
+    @appointment = Appointment.find(params[:id]) 
+    if @appointment.update(appointment_params)
+      redirect_to doctor_appointment_path(@doctor, @appointment)
+    else
+      render :new
+    end
   end
 
 
@@ -31,14 +36,17 @@ class AppointmentsController < ApplicationController
   end
 
   def show
+    # @appointments = Appointment.all
+    # @patients = Patient.all
     @appointment = Appointment.find(params[:id])
-    @patient = Patient.find(params[:id])
+    # @patient = @appointment.patient
   end
 
   def destroy
-    @appointment = @doctor.appointments.find(appointment_params)
+    @appointment = Appointment.find(params[:id])
     @appointment.destroy
-    redirect_to doctor_endrollments_path(@doctor)
+    # redirect_to root_path
+    redirect_to doctor_appointments_path(@appointment.doctor_id)
   end
 
   private

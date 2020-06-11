@@ -29,7 +29,8 @@ times = ['12:00pm','1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '12:30pm','
       year: 2020,
       time: times.sample,
       office_name: Faker::Nation.capital_city,
-      patient_id: patient.id
+      patient_id: patient.id,
+      doctor_id: doctor.id
     )
   end
 end

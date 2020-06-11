@@ -1,2 +1,18 @@
-<h1>Appointments#index</h1>
-<p>Find me in app/views/appointments/index.html.erb</p>
+<h1><%= @doctor.name %></h1>
+<hr />
+<ul>
+<% @appointments.each do |appointment| %>
+  <h2><%= appointment.patient.full_name %> <%= appointment.time %> <%= appointment.full_year %>  </h2>   
+  <%= link_to 'Delete Apppointment', doctor_appointment_path(@doctor, appointment), method: :delete, class: "ui red button" %>
+<%= link_to 'Update Appointment', edit_doctor_appointment_path(@doctor, appointment), class: "ui blue button" %> 
+<%= link_to 'Show Appointment', doctor_appointment_path(@doctor, appointment), class: "ui purple button" %>
+<% end %>
+</ul>
+
+<br /> 
+<br />
+ <br />
+ 
+
+
+<%= link_to 'Back', doctors_path, class: "ui orange button" %>
