@@ -28,7 +28,7 @@ class AppointmentsController < ApplicationController
   def create
     @appointment = @doctor.appointments.new(appointment_params)
     if @appointment.save
-      # redirect_to root_path
+    
       redirect_to doctor_appointment_path(@doctor, @appointment)
     else
       render :new
@@ -36,16 +36,12 @@ class AppointmentsController < ApplicationController
   end
 
   def show
-    # @appointments = Appointment.all
-    # @patients = Patient.all
     @appointment = Appointment.find(params[:id])
-    # @patient = @appointment.patient
   end
 
   def destroy
     @appointment = Appointment.find(params[:id])
     @appointment.destroy
-    # redirect_to root_path
     redirect_to doctor_appointments_path(@appointment.doctor_id)
   end
 
